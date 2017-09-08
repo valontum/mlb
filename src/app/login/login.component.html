@@ -1,0 +1,28 @@
+<div class="login-page">
+  <div class="form">
+    <form class="register-form" *ngIf="registerFormShow" id="forma">
+      <p class="title">Create Account</p>
+      <input type="text" placeholder="name*" name="name" [(ngModel)]="newUser.name"/>
+      <input type="text" placeholder="email address*" name="email" [(ngModel)]="newUser.email" />
+      <input type="password" placeholder="password*" name="password" [(ngModel)]="newUser.password"/>
+      <input type="password" placeholder="repeat password*" name="repeatPassword" [(ngModel)]="newUser.repeatPassword" />
+
+
+      <textarea placeholder="profile/company description*" name="description" [(ngModel)]="newUser.profileDescription"></textarea>
+      <span> Profile Image:</span>
+      <input type="file" name="pict" (change)="fileChange($event)" accept="image/*">
+
+      <button (click)="makeRequest()">create</button>
+      <p class="message">Already registered? <a (click)="registerFormShow = false">Sign In</a> </p>
+      <p style="color:red;">{{moreInfo}}</p>
+    </form>
+    <div class="login-form" *ngIf="!registerFormShow">
+      <p class="title">Login</p>
+      <input type="text" placeholder="username" [(ngModel)]="newUser.email"/>
+      <input type="password" placeholder="password" [(ngModel)]="newUser.password"/>
+      <button (click)="login()">login</button>
+      <p class="message">Not registered? <a (click)="registerFormShow = true">Create an account</a></p>
+      <p style="color:red;">{{moreInfo}}</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="no-js oldie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+
+  <!--- basic page needs
+  ================================================== -->
+  <meta charset="utf-8">
+  <title>Lhander</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- mobile specific metas
+  ================================================== -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- CSS
+  ================================================== -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/vendor.css">
+
+  <!-- script
+  ================================================== -->
+  <script src="js/modernizr.js"></script>
+
+  <!-- favicons
+   ================================================== -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
+</head>
+
+<body id="top">
+
+<!-- header
+ ================================================== -->
+<header>
+
+  <div class="row">
+
+    <div class="logo">
+      <a>XYZ</a>
+    </div>
+
+    <nav id="main-nav-wrap">
+      <ul class="main-navigation">
+        <li class="current"><a class="smoothscroll"  (click)="goTo('intro')" title="">Home</a></li>
+        <li><a class="smoothscroll" (click)="goTo('faq')" title="">Media</a></li>
+        <li><a class="smoothscroll"  (click)="goTo('testimonials')" title="">About Us</a></li>
+        <li><a class="smoothscroll"  (click)="goTo('contact')" title="">Contact</a></li>
+
+      </ul>
+    </nav>
+
+    <a class="menu-toggle" href="#"><span>Menu</span></a>
+
+  </div>
+
+</header> <!-- /header -->
+
+<!-- intro section
+ ================================================== -->
+<section id="intro">
+
+  <div class="shadow-overlay"></div>
+
+  <div class="intro-content">
+    <div class="row">
+
+      <div class="col-twelve">
+
+        <div class='video-link'>
+          <a><img alt=""></a>
+        </div>
+
+        <h5>Hello welcome to XYZ.</h5>
+        <br>
+        <h1>Auf der die Community Medienhäusern hilft, ihre Innovationsprobleme zu lösen</h1>
+        <br>
+        <a class="button stroke smoothscroll" (click)="goTo('faq')" title="">Learn More</a> <a class="button stroke" href="#process" title="" routerLink="/challenges">See Challenges</a>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Modal Popup
+    ========================================================= -->
+
+  <div id="video-popup" class="popup-modal mfp-hide">
+
+    <div class="fluid-video-wrapper">
+      <iframe src="http://player.vimeo.com/video/14592941?title=0&amp;byline=0&amp;portrait=0&amp;color=faec09" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+
+    <a class="close-popup">Close</a>
+
+  </div> <!-- /video-popup -->
+
+</section> <!-- /intro -->
+
+
+<!-- Process Section
+================================================== -->
+
+
+
+
+
+<!-- faq
+================================================== -->
+<section id="faq">
+
+  <div class="row section-intro">
+    <div class="col-twelve with-bottom-line">
+
+
+      <h1>Hey Medienhaus,  Hey Innovator!</h1>
+
+      <p class="lead">Hey Medienhaus! Hast du eine Challenge für unsere Crowd? Hey Innovator! Hast du eine Idee, die jedes Medienhaus nach vorne bringen würde?
+      </p>
+
+    </div>
+  </div>
+
+  <div class="row faq-content">
+
+    <div class="q-and-a block-1-2 block-tab-full group">
+
+      <div class="bgrid">
+
+        <h3>Hey Medienhaus!</h3>
+
+        <p>Du würdest gerne etwas mit Alexa oder dem ARKit machen, hast aber keine Idee? Du hast schon eine ungefähre Idee, aber weißt nicht, wie man sie umsetzen könnte? Oder weißt du schon konkret was du willst, findest aber niemanden, der es für dich baut? Dann bist du hier genau richtig!
+
+          Auf den folgenden Seiten kannst du deine Probleme als Challenge posten und ein Kopfgeld ausschreiben - Startups, Innovatoren und Medienmenschen aller Art pitchen ihre Ideen und Umsetzungsvorschläge. Der beste Vorschlag bekommt dein Kopfgeld.
+
+          Also worauf wartest du noch? Lass die Crowd deine Probleme lösen!
+        </p>
+
+      </div>
+
+      <div class="bgrid">
+
+        <h3>Hey Startup/Innovator/Medienfan!</h3>
+
+        <p>Du hast DIE Idee, die jedes Medienhaus nach vorne bringen würde? Du hast ein neues Produkt, dass Probleme löst, an dem sich andere die Zähne ausbeißen? Oder kannst du ein neues, super-multimediales Format bauen? Dann bist du hier genau richtig!
+
+          Auf den folgenden Seiten posten Medienhäuser ihre Challenges. Wenn du für eines davon eine Lösung hast - egal ob durch Manpower, ein Produkt oder auch nur eine Idee - melde dich! Wenn sich deine Idee durchsetzt, bekommst du das Kopfgeld, das das Medienhaus ausgelobt hat.
+
+          Also worauf wartest du noch? Hilf mit, die Medien von Morgen zu gestalten!
+
+        </p>
+
+      </div>
+
+
+
+    </div> <!-- /q-and-a -->
+
+  </div> <!-- /faq-content -->
+
+  <div class="row section-ads">
+
+    <div class="col-twelve">
+
+      <div class="ad-content">
+
+
+
+
+
+        <div class="action">
+          <a class="button large round" routerLink="/challenges">See Challenges</a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div> <!-- /section-ads -->
+
+
+</section> <!-- /faq -->
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Testimonials Section
+================================================== -->
+<section id="testimonials">
+
+  <div class="row">
+    <div class="col-twelve">
+      <h2 class="h01">About Us</h2>
+    </div>
+  </div>
+
+  <div class="row flex-container">
+
+
+            XYZ ist ein Projekt des Media Lab Bayern, unterstützt durch die Google Digital News Initiative. <br><br>
+
+            Mit XYZ wollen wir Medienhäusern eine Plattform geben, Innovationsprobleme auszulagern und mit Ideen und Startups in Verbindung zu kommen - gerade auch, wenn es In-House keine Kapazitäten gibt. Die Nutzung der Plattform ist für alle Beteiligten kostenlos - über die Höhe ihrer Preisgelder entscheiden die Medienhäuser selbst. <br><br>
+
+            Das Media Lab fördert als Vorgründerzentrum digitale Journalismus- und Medienprojekte von der ersten Idee bis zur Gründung eines Startups. Es richtet sich an Studenten, Berufsanfänger und Professionals aus den Bereichen Medien, Journalismus, Informatik, Design und Business-Development. <br><br>
+
+            Partner des Media Lab Bayern sind: Antenne Bayern, Discovery Networks Deutschland, Google, KonsoleLabs, Kabel Deutschland, Mediaplus, Microsoft, München TV, OpenDataCity, ProSiebenSat.1 Media AG, Radio Gong 96,3, Radio IN, rt.1 Mediagroup, Sky, Sport1, Sport1 FM, Tellux Next und der Verband Bayerischer Lokalfunk. Das Media Lab Bayern kooperiert mit den Münchner Aus- und Fortbildungskanälen und dem Mediennetzwerk Bayern. <br><br>
+
+            Das Media Lab Bayern ist eine Einrichtung der Bayerischen Landeszentrale für neue Medien (BLM) und wird gefördert vom Bayerischen Staatsministerium für Wirtschaft und Medien, Energie und Technologie. Als Partner des WERK1.Bayern unterstützt das Media Lab die bayerische Startup-Szene. <br><br>
+
+
+
+  </div> <!-- /flex-container -->
+
+</section> <!-- /testimonials -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- footer
+================================================== -->
+<footer>
+
+  <div class="footer-main" id="contact">
+
+    <div class="row">
+
+      <div class="col-four tab-full mob-full footer-info">
+
+        <div class="footer-logo"></div>
+
+        <p>
+          MEDIA LAB BAYERN <br>
+          ROSENHEIMER STRASSE 145 <br>
+          81671 MÜNCHEN <br>
+          info@medialab-bayern.de
+        </p>
+
+      </div> <!-- /footer-info -->
+
+      <div class="col-two tab-1-3 mob-1-2 site-links">
+
+        <h4>Site Links</h4>
+
+        <ul>
+          <li><a (click)="goTo('faq')">Media</a></li>
+          <li><a (click)="goTo('testimonials')">About Us</a></li>
+          <li><a (click)="goTo('contact')">Contact</a></li>
+
+        </ul>
+
+      </div> <!-- /site-links -->
+
+
+
+
+
+    </div> <!-- /row -->
+
+  </div> <!-- /footer-main -->
+
+
+  <div class="footer-bottom">
+
+    <div class="row">
+
+      <div class="col-twelve">
+        <div class="copyright">
+          <span>© Copyright XYZ 2017.</span>
+
+        </div>
+
+
+      </div>
+
+    </div> <!-- /footer-bottom -->
+
+  </div>
+
+</footer>
+
+<div id="preloader">
+  <div id="loader"></div>
+</div>
+
+<!-- Java Script
+================================================== -->
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery-migrate-1.2.1.min.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,554 @@
+
+<header class="header  push-down-45">
+  <div class="container">
+    <div class="logo  pull-left">
+      <a>
+        <img src="" alt="Logo" width="352" height="140">
+      </a>
+    </div>
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#readable-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav class="navbar  navbar-default" role="navigation">
+
+      <div class="collapse  navbar-collapse" id="readable-navbar-collapse">
+        <ul class="navigation">
+
+
+          <li class="dropdown rightmenue" *ngIf="authService.isAuthenticated().status">
+            <a title="Notifications" routerLink="/notifications" class="dropdown-toggle" data-toggle="dropdown" (click)='this.user.openNotifications ? setOffNotifications() : ""'><div class="notificationicon"><img  [src]='this.user.openNotifications ?  "assets/images/notification_icon_filled.png" : "assets/images/notification_icon.png"' alt="Meta avatar" width="35" height="35"></div> </a>
+
+          </li>
+
+
+          <li class="dropdown rightmenue" *ngIf="user!=null">
+            <a class="dropdown-toggle" data-toggle="dropdown"><div class="menuicon"><img  [src]='"images/avatar/"+ user.id +".jpg"' alt="Meta avatar" width="40" height="40"></div> </a>
+            <ul class="navigation__dropdown">
+              <li> <a [routerLink]='"/profile/"+user.id'>My Account</a> </li>
+              <li> <a (click)="signout()">Sign Out</a> </li>
+
+            </ul>
+          </li>
+
+
+
+
+        </ul>
+      </div>
+    </nav>
+
+
+
+    <nav class="navbar  navbar-default" role="navigation">
+
+      <div class="collapse  navbar-collapse" id="readable-navbar-collapse">
+        <ul class="navigation">
+          <li class="dropdown">
+            <a routerLink="/challenges" class="dropdown-toggle" >Challenges</a>
+
+          </li>
+
+
+          <li class="">
+            <a [routerLink]="authService.isAuthenticated().status ? ['/new-challenge'] : ['/login' , {routeData:'/new-challenge'}]" class="dropdown-toggle" >Create a Challenge</a>
+          </li>
+
+
+
+
+
+
+          <li class="dropdown" *ngIf="!authService.isAuthenticated().status">
+            <a routerLink="/login" class="dropdown-toggle" >Login</a>
+
+          </li>
+
+
+
+
+
+
+
+
+
+        </ul>
+      </div>
+    </nav>
+
+
+  </div>
+</header>
+
+
+
+
+
+
+<div class="search-panel">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <form action="http://html-demo.proteusthemes.com/readable/search-results.html">
+          <input type="text" class="search-panel__form  js--search-panel-text" placeholder="Begin typing for search">
+          <p class="search-panel__text">Press enter to see results or esc to cancel.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slider" *ngIf="challenge!=null">
+  <div id="carousel-example-generic" class="carousel  slide" data-ride="carousel">
+
+
+
+    <div class="carousel-inner">
+      <div class="item  active">
+        <img src="images/slider-image-2.jpg" alt="Slider">
+        <div class="carousel-caption">
+          <div class="slider__container">
+
+            <h1 class="slider__title">{{challenge.title}}</h1>
+
+            <button _ngcontent-c3="" class="btn  btn-info  btn-info--transparent" (click)="goTo('submitfragment')">Submit Idea</button>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+</div>
+
+
+<div class="container" *ngIf="challenge!=null">
+  <div class="row">
+    <div class="col-xs-12  col-md-8">
+
+      <div class="boxed  push-down-60">
+
+
+
+
+        <div class="row">
+          <div class="col-xs-10  col-xs-offset-1  col-md-8  col-md-offset-2  push-down-60">
+
+            <div class="post-content">
+              <br>
+              <div class="notifications push-down-60">
+                <table>
+
+                  <tr>
+                    <td rowspan="2" width ="60"><img  [src]='"images/avatar/"+ challenge.publisher_id +".jpg"' alt="Meta avatar" width="50" height="50"></td>
+                    <td> <a [routerLink]='"/profile/"+challenge.publisher_id'>{{challenge.publisher_name}}</a> </td>
+
+                  </tr>
+                  <tr>
+
+                    <td><h6>{{ challenge.publish_date | timeAgo}}</h6></td>
+
+                  </tr>
+                </table>
+
+
+
+              </div>
+
+
+
+
+
+
+              <h4>What is the challenge about?</h4>
+              <p>{{challenge.description}}</p>
+
+
+              <h4>What are Additional requirements?</h4>
+              <p>{{challenge.requirements}}</p>
+
+              <h4>What is the reward?</h4>
+              <p>{{challenge.reward}}</p>
+
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+            <div class="row" id="submitfragment">
+              <div class="col-xs-12  col-sm-6">
+
+                <div class="post-comments">
+
+                </div>
+
+              </div>
+              <div class="col-xs-12  col-sm-6">
+
+                <div class="social-icons">
+                  <a href="#" class="social-icons__container"> <span class="zocial-facebook"></span> </a>
+                  <a href="#" class="social-icons__container"> <span class="zocial-email"></span> </a>
+                </div>
+
+              </div>
+            </div>
+
+
+
+
+
+            <div class="widget-posts  push-down-30" >
+
+
+
+              <ul class="nav  nav-tabs">
+                <li [class]='showQuestions ? "" : "active"'>
+                  <a (click)="showQuestions = false" data-toggle="tab"> <span class="glyphicon  glyphicon-flash"></span> &nbsp;Idea Submission ({{challenge.ideas.length}}) </a>
+                </li>
+                <li [class]='showQuestions ? "active" : ""'> <a  (click)="showQuestions = true" data-toggle="tab"> <span class="glyphicon  glyphicon-question-sign"></span> &nbsp;Questions/Comments ({{challenge.questions.length}}) </a> </li>
+              </ul>
+
+              <div class="tab-content">
+                <div [class]='showQuestions ? "tab-pane  fade" : "tab-pane  fade  in  active"' id="recent-posts">
+
+                  <div class="comments push-down-30">
+                  <table >
+
+                    <tr>
+                      <td valign="top" width="10px"><img  [src]='authService.isAuthenticated().status ? "images/avatar/"+ user.id +".jpg" : "images/avatar/30231558107.jpg"' alt="Meta avatar" width="40" height="40"></td>
+                      <td valign="top">
+
+
+
+                        <div class="contact">
+
+
+                          <form action="#">
+                            <div class="row">
+
+                              <div class="col-xs-12">
+
+                                <textarea rows="4" type="text" placeholder="Please describe the idea..." [(ngModel)]="data.solution" name="solution"></textarea>
+
+                              </div>
+
+
+
+
+
+
+
+
+
+
+                            </div>
+                          </form>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+                      </td>
+
+                    </tr>
+                    <tr>
+
+                      <td></td>
+                      <td align="right">
+                        <button class="btn  btn-info  btn-info--transparent" (click)="postSolution()">Submit Idea</button>
+
+
+                      </td>
+
+
+                    </tr>
+                  </table>
+
+
+
+                </div>
+
+                <div class="comments push-down-30">
+                  <span *ngFor="let idea of challenge.ideas; let i = index" >
+                  <table *ngIf="i<3 || showMore">
+
+                    <tr>
+                      <td valign="top" width="10px" ><img  [src]='"images/avatar/"+ idea.publisher_id +".jpg"' alt="Meta avatar" width="40" height="40"></td>
+                      <td valign="top"> <a [routerLink]='"/profile/"+idea.publisher_id'>{{idea.publisher_name}}</a> {{idea.description}}</td>
+                      <td valign="top" align="right" width="20%"	>{{ idea.publish_date | timeAgo}}</td>
+                    </tr>
+                    <tr>
+
+                      <td></td>
+                      <td><a (click)='likeUnlike(idea.likes)=="Like" ?  postLike(idea.id, i) : unLike(idea.id, i)'>{{likeUnlike(idea.likes)}} {{idea.likes.length==0 ? "" : "| "+idea.likes.length+" Likes"}}</a></td>
+                      <td></td>
+
+                    </tr>
+                      <br>
+                  <br>
+
+                  </table>
+
+                    </span>
+
+
+
+
+                </div>
+
+
+                <h6 align="center"><a (click)="showMore = !showMore">Show more...</a></h6>
+              </div>
+              <div [class]='showQuestions ? "tab-pane  fade  in  active" : "tab-pane  fade"' id="popular-posts">
+
+                <div class="comments push-down-30">
+                <table >
+
+                  <tr>
+                    <td valign="top" width="10px"><img   [src]='authService.isAuthenticated().status ? "images/avatar/"+ user.id +".jpg" : "images/avatar/30231558107.jpg"' alt="Meta avatar" width="40" height="40"></td>
+                    <td valign="top">
+
+
+
+                      <div class="contact">
+
+
+                        <form action="#">
+                          <div class="row">
+
+                            <div class="col-xs-12">
+
+                              <textarea rows="4" type="text" placeholder="Ask a question..." [(ngModel)]="data.question" name="question"></textarea>
+
+                            </div>
+
+
+
+
+
+
+
+
+
+
+                          </div>
+                        </form>
+                      </div>
+
+
+
+
+
+
+
+
+
+
+
+                    </td>
+
+                  </tr>
+                  <tr>
+
+                    <td></td>
+                    <td align="right">
+                      <button class="btn  btn-info  btn-info--transparent" (click)="postQuestion()">Post</button>
+
+
+                    </td>
+
+
+                  </tr>
+                </table>
+
+
+
+              </div>
+
+              <div class="comments push-down-30">
+                <span *ngFor="let question of challenge.questions; let i = index" >
+                <table *ngIf="i<3 || showMoreQuestion">
+
+                  <tr>
+                    <td valign="top" width="10px"><img  [src]='"images/avatar/"+ question.publisher_id +".jpg"' alt="Meta avatar" width="40" height="40"></td>
+                    <td valign="top"> <a [routerLink]='"/profile/"+question.publisher_id'>{{question.publisher_name}}</a> {{question.description}} </td>
+                    <td valign="top" align="right" width="20%"	>{{ question.publish_date | timeAgo}}</td>
+                  </tr>
+                  <tr>
+
+                    <td></td>
+                    <td><a (click)='likeUnlike(question.likes)=="Like" ?  postLikeQ(question.id, i) : unLikeQ(question.id, i)'>{{likeUnlike(question.likes)}} {{question.likes.length==0 ? "" : "| "+question.likes.length+" Likes"}}</a></td>
+                    <td></td>
+
+                  </tr>
+                    <br>
+                  <br>
+                </table>
+                </span>
+
+
+
+              </div>
+
+
+              <h6 align="center" (click)="showMoreQuestion = !showMoreQuestion"><a>Show more...</a></h6>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+
+  </div>
+
+
+
+</div>
+
+
+<div class="col-xs-12  col-md-4">
+
+  <div class="sidebar  boxed  push-down-30">
+    <div class="row">
+
+      <div class="col-xs-10  col-xs-offset-1">
+
+
+
+
+        <div class="widget-categories  push-down-30">
+          <h6>Important info</h6>
+          <hr>
+          <table>
+            <tr><td>Reward:</td><td>{{challenge.amount}}</td></tr>
+            <tr><td>Deadline:</td><td>{{challenge.deadline}}</td></tr>
+            <tr><td>Number of ideas:</td><td>{{challenge.ideas.length}}</td></tr>
+          </table>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar  boxed  push-down-30">
+    <div class="row">
+      <div class="col-xs-10  col-xs-offset-1">
+
+
+
+
+
+
+
+        <div class="widget-posts  push-down-30">
+          <h6>Popular Challenges</h6>
+
+
+
+          <div class="tab-content">
+
+            <div class="tab-pane  fade in  active" id="popular-posts">
+
+
+              <div class="push-down-15">
+                <img src="images/austria_logo_big.jpg" width="250" height="100" alt="Posts">
+                <h5>
+                  <a href="single-post.html">Design an inspiring communication concept to activate people to take a stance for the binding popular initiative.</a>
+                </h5>
+                <span class="widget-posts__time">19 hours ago</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+
+
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="col-xs-12  col-md-3">
+        <div class="widget-about  push-down-30">
+          <img src="" alt="Logo" width="176" height="70">
+          <br/>
+          <span class="footer__text">XYZ, auf der die Community Medienhäusern hilft, ihre Innovationsprobleme zu lösen</span>
+          <br/>
+          <br/>
+
+        </div>
+      </div>
+
+      <div class="col-xs-12  col-md-3">
+        <nav class="widget-navigation  push-down-30">
+          <h6>Navigation</h6>
+          <hr>
+          <ul class="navigation">
+            <li> <a routerLink='/challenges'>Challenges</a> </li>
+
+
+
+            <li> <a routerLink='/new-challenge'>New Challenge</a> </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="col-xs-12  col-md-3">
+        <div class="widget-contact  push-down-30">
+          <h6>Contact Us</h6>
+          <hr>
+          <span class="widget-contact__text">
+
+MEDIA LAB BAYERN <br>
+ROSENHEIMER STRASSE 145 <br>
+81671 MÜNCHEN <br>
+</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <footer class="copyrights">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12  col-sm-6">
+          Name of the platform Copyright 2017.
+        </div>
+        <div class="col-xs-12  col-sm-6">
+
+        </div>
+      </div>
+    </div>
+  </footer>
