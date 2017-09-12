@@ -14,6 +14,7 @@ export class ChallengesComponent implements OnInit {
 
   challenges = [];
   user = null;
+  popularChallenges = [];
 
   constructor(private authService: AuthService, private router: Router, private _http:Http) {
 
@@ -50,6 +51,19 @@ export class ChallengesComponent implements OnInit {
       this.challenges = data.json();
        console.log(this.challenges);
       console.log(this.user);
+
+
+
+    });
+
+    this._http.get('http://localhost:3000/api/popularchallenges').subscribe((data) => {
+
+
+
+
+
+      this.popularChallenges = data.json();
+
 
 
 

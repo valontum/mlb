@@ -336,6 +336,23 @@ mongodb.collection("challenges").find({},{'publisher_name' : true, 'title':true,
 
 
 
+router.get('/popularchallenges', (req, res, next) => {
+
+
+  mongodb.collection("challenges").find({},{ 'title':true, 'id':true, 'publish_date' : true}, { limit : 3 }).toArray(function (err, result) {
+  if (err) throw err;
+
+  res.json(result);
+
+});
+
+
+});
+
+
+
+
+
 router.get('/challenge/:id', (req, res, next) => {
 
   var userID =req.params.id;

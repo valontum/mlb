@@ -31,7 +31,24 @@ export class NotificationsComponent implements OnInit {
 
   user = null;
   sub : any;
+
+  popularChallenges = [];
+
+
   ngOnInit() {
+
+    this._http.get('http://localhost:3000/api/popularchallenges').subscribe((data) => {
+
+
+
+
+
+      this.popularChallenges = data.json();
+
+
+
+
+    });
 
 
     if(this.authService.isAuthenticated().status)

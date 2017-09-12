@@ -30,6 +30,8 @@ export class ChallengeComponent implements OnInit {
     user = null;
 
 
+  popularChallenges = [];
+
   constructor(private route: ActivatedRoute, private router: Router, private _http:Http, private authService: AuthService) {
 
 
@@ -55,6 +57,19 @@ export class ChallengeComponent implements OnInit {
 
       });
     }
+
+    this._http.get('http://localhost:3000/api/popularchallenges').subscribe((data) => {
+
+
+
+
+
+      this.popularChallenges = data.json();
+
+
+
+
+    });
 
 
 
@@ -100,6 +115,48 @@ export class ChallengeComponent implements OnInit {
 
 
     });
+  }
+
+  signout()
+  {
+    this.authService.signOut();
+    this.router.navigate(['/login']);
+  }
+
+  setOffNotifications()
+  {
+
+
+
+
+
+
+    var formData = new FormData();
+
+    let headers = new Headers();
+    let options = new RequestOptions({headers: headers});
+
+
+    this._http.put('http://localhost:3000/api/notifications/', formData, options).subscribe((data) => {
+
+      if (data.json().status == "success") {
+
+        console.log("success");
+
+        this.user.openNotifications = false;
+
+
+      } else {
+
+      }
+
+
+    });
+
+
+
+
+
   }
 
   goTo(location: string): void {

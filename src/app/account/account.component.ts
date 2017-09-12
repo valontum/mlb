@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {Http} from "@angular/http";
+import {Http, RequestOptions} from '@angular/http';
 import {AuthService} from "../services/auth.service";
+import {Headers} from '@angular/http';
 
 @Component({
   selector: 'app-account',
@@ -26,12 +27,66 @@ export class AccountComponent implements OnInit {
 
 
 
+  setOffNotifications()
+  {
 
 
 
+
+
+
+    var formData = new FormData();
+
+    let headers = new Headers();
+    let options = new RequestOptions({headers: headers});
+
+
+    this._http.put('http://localhost:3000/api/notifications/', formData, options).subscribe((data) => {
+
+      if (data.json().status == "success") {
+
+        console.log("success");
+
+        this.user.openNotifications = false;
+
+
+      } else {
+
+      }
+
+
+    });
+
+
+
+
+
+  }
+
+  signout()
+  {
+    this.authService.signOut();
+    this.router.navigate(['/login']);
+  }
+
+
+  popularChallenges = [];
 
 
   ngOnInit() {
+
+    this._http.get('http://localhost:3000/api/popularchallenges').subscribe((data) => {
+
+
+
+
+
+      this.popularChallenges = data.json();
+
+
+
+
+    });
 
     if(this.authService.isAuthenticated().status)
     {

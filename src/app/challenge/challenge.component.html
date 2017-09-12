@@ -167,14 +167,14 @@
 
 
 
-              <h4>What is the challenge about?</h4>
+              <h4>Worum geht es in der Challenge?</h4>
               <p>{{challenge.description}}</p>
 
 
-              <h4>What are Additional requirements?</h4>
+              <h4>Welche Bedingungen gibt es zusätzlich?</h4>
               <p>{{challenge.requirements}}</p>
 
-              <h4>What is the reward?</h4>
+              <h4>Was bekomme ich dafür?</h4>
               <p>{{challenge.reward}}</p>
 
 
@@ -200,10 +200,7 @@
               </div>
               <div class="col-xs-12  col-sm-6">
 
-                <div class="social-icons">
-                  <a href="#" class="social-icons__container"> <span class="zocial-facebook"></span> </a>
-                  <a href="#" class="social-icons__container"> <span class="zocial-email"></span> </a>
-                </div>
+
 
               </div>
             </div>
@@ -220,7 +217,7 @@
                 <li [class]='showQuestions ? "" : "active"'>
                   <a (click)="showQuestions = false" data-toggle="tab"> <span class="glyphicon  glyphicon-flash"></span> &nbsp;Idea Submission ({{challenge.ideas.length}}) </a>
                 </li>
-                <li [class]='showQuestions ? "active" : ""'> <a  (click)="showQuestions = true" data-toggle="tab"> <span class="glyphicon  glyphicon-question-sign"></span> &nbsp;Questions/Comments ({{challenge.questions.length}}) </a> </li>
+                <li [class]='showQuestions ? "active" : ""'> <a  (click)="showQuestions = true" data-toggle="tab"> <span class="glyphicon  glyphicon-question-sign"></span> &nbsp;Questions & Comments ({{challenge.questions.length}}) </a> </li>
               </ul>
 
               <div class="tab-content">
@@ -243,7 +240,7 @@
 
                               <div class="col-xs-12">
 
-                                <textarea rows="4" type="text" placeholder="Please describe the idea..." [(ngModel)]="data.solution" name="solution"></textarea>
+                                <textarea rows="4" type="text" placeholder="Du einen Gedanken zu dieser Challenge? Teile ihn mit der Community!" [(ngModel)]="data.solution" name="solution"></textarea>
 
                               </div>
 
@@ -469,19 +466,20 @@
 
 
 
-          <div class="tab-content">
+          <div class="tab-content" >
 
-            <div class="tab-pane  fade in  active" id="popular-posts">
-
-
+            <div class="tab-pane  fade in  active"  id="popular-posts" *ngFor="let challenge of this.popularChallenges; let i = index">
               <div class="push-down-15">
-                <img src="images/austria_logo_big.jpg" width="250" height="100" alt="Posts">
+                <img [src]='"images/challenge_cover/"+ challenge.id +".jpg"' width="250" height="100" alt="Posts">
                 <h5>
-                  <a href="single-post.html">Design an inspiring communication concept to activate people to take a stance for the binding popular initiative.</a>
+                  <a href="single-post.html">{{challenge.title}}</a>
                 </h5>
-                <span class="widget-posts__time">19 hours ago</span>
+                <span class="widget-posts__time">{{ challenge.publish_date | timeAgo}}</span>
               </div>
+
             </div>
+
+
           </div>
         </div>
 
@@ -496,7 +494,7 @@
 
   </div>
 
-
+</div>
 
 
 

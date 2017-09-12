@@ -110,7 +110,7 @@
 
                   <tr>
                     <td rowspan="2" width ="50"><img  [src]='"images/avatar/"+ notification.publisher_id +".jpg"' alt="Meta avatar" width="50" height="50"></td>
-                    <td> <a href="#">{{notification.publisher_name}}</a> {{this.notificationType[notification.type]}} <a href="#"></a></td>
+                    <td> <a [routerLink]='"/profile/"+notification.publisher_id'>{{notification.publisher_name}}</a> {{this.notificationType[notification.type]}} <a href="#"></a></td>
 
                   </tr>
                   <tr>
@@ -171,31 +171,20 @@
 
 
 
-              <div class="tab-content">
+              <div class="tab-content" >
 
-                <div class="tab-pane  fade in  active" id="popular-posts">
+                <div class="tab-pane  fade in  active"  id="popular-posts" *ngFor="let challenge of this.popularChallenges; let i = index">
                   <div class="push-down-15">
-                    <img src="images/dummy-licensed/blog-image-3-small.jpg" alt="Posts">
+                    <img [src]='"images/challenge_cover/"+ challenge.id +".jpg"' width="250" height="100" alt="Posts">
                     <h5>
-                      <a href="single-post.html">This is a showcase of the most popular posts</a>
+                      <a href="single-post.html">{{challenge.title}}</a>
                     </h5>
-                    <span class="widget-posts__time">9 hours ago</span>
+                    <span class="widget-posts__time">{{ challenge.publish_date | timeAgo}}</span>
                   </div>
-                  <div class="push-down-15">
-                    <img src="images/dummy-licensed/blog-image-small.jpg" alt="Posts">
-                    <h5>
-                      <a href="single-post.html">This is a showcase of the most popular posts</a>
-                    </h5>
-                    <span class="widget-posts__time">12 hours ago</span>
-                  </div>
-                  <div class="push-down-15">
-                    <img src="images/dummy-licensed/blog-image-3-small.jpg" alt="Posts">
-                    <h5>
-                      <a href="single-post.html">This is a showcase of the most popular posts</a>
-                    </h5>
-                    <span class="widget-posts__time">19 hours ago</span>
-                  </div>
+
                 </div>
+
+
               </div>
             </div>
 

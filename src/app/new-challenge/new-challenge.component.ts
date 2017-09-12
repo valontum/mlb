@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Http, RequestOptions} from "@angular/http";
 import {Router} from "@angular/router";
 import {AuthService} from "../services/auth.service";
+import {Headers} from '@angular/http';
 
 @Component({
   selector: 'app-new-challenge',
@@ -14,6 +15,20 @@ export class NewChallengeComponent implements OnInit {
   constructor(private _http: Http, private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
+
+
+    this._http.get('http://localhost:3000/api/popularchallenges').subscribe((data) => {
+
+
+
+
+
+      this.popularChallenges = data.json();
+
+
+
+
+    });
 
 
     if(this.authService.isAuthenticated().status)
@@ -36,7 +51,7 @@ export class NewChallengeComponent implements OnInit {
 
   }
 
-
+  popularChallenges = [];
   newChallenge = {
 
     title: "",
@@ -59,6 +74,48 @@ export class NewChallengeComponent implements OnInit {
     var file = files[0];
 
     this.newChallenge.file = file;
+
+
+  }
+
+  signout()
+  {
+    this.authService.signOut();
+    this.router.navigate(['/login']);
+  }
+
+  setOffNotifications()
+  {
+
+
+
+
+
+
+    var formData = new FormData();
+
+    let headers = new Headers();
+    let options = new RequestOptions({headers: headers});
+
+
+    this._http.put('http://localhost:3000/api/notifications/', formData, options).subscribe((data) => {
+
+      if (data.json().status == "success") {
+
+        console.log("success");
+
+        this.user.openNotifications = false;
+
+
+      } else {
+
+      }
+
+
+    });
+
+
+
 
 
   }
