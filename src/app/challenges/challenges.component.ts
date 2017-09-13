@@ -42,7 +42,7 @@ export class ChallengesComponent implements OnInit {
 
       });
     }
-    this._http.get('http://localhost:3000/api/challenges').subscribe((data) => {
+    this._http.get('http://localhost:4000/api/challenges').subscribe((data) => {
 
 
 
@@ -56,7 +56,7 @@ export class ChallengesComponent implements OnInit {
 
     });
 
-    this._http.get('http://localhost:3000/api/popularchallenges').subscribe((data) => {
+    this._http.get('http://localhost:4000/api/popularchallenges').subscribe((data) => {
 
 
 
@@ -122,7 +122,7 @@ export class ChallengesComponent implements OnInit {
       let options = new RequestOptions({headers: headers});
 
 
-      this._http.put('http://localhost:3000/api/like/' + postId, formData, options).subscribe((data) => {
+      this._http.put('http://localhost:4000/api/like/' + postId, formData, options).subscribe((data) => {
 
         if (data.json().status == "success") {
 
@@ -164,7 +164,7 @@ export class ChallengesComponent implements OnInit {
       let options = new RequestOptions({headers: headers});
 
 
-      this._http.put('http://localhost:3000/api/notifications/', formData, options).subscribe((data) => {
+      this._http.put('http://localhost:4000/api/notifications/', formData, options).subscribe((data) => {
 
         if (data.json().status == "success") {
 
@@ -200,7 +200,7 @@ export class ChallengesComponent implements OnInit {
       let options = new RequestOptions({headers: headers});
 
 
-      this._http.put('http://localhost:3000/api/unlike/' + postId, formData, options).subscribe((data) => {
+      this._http.put('http://localhost:4000/api/unlike/' + postId, formData, options).subscribe((data) => {
 
         if (data.json().status == "success") {
 

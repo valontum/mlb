@@ -37,7 +37,7 @@ export class NotificationsComponent implements OnInit {
 
   ngOnInit() {
 
-    this._http.get('http://localhost:3000/api/popularchallenges').subscribe((data) => {
+    this._http.get('http://localhost:4000/api/popularchallenges').subscribe((data) => {
 
 
 
@@ -95,7 +95,7 @@ export class NotificationsComponent implements OnInit {
     let options = new RequestOptions({headers: headers});
 
 
-    this._http.put('http://localhost:3000/api/notifications/', formData, options).subscribe((data) => {
+    this._http.put('http://localhost:4000/api/notifications/', formData, options).subscribe((data) => {
 
       if (data.json().status == "success") {
 
