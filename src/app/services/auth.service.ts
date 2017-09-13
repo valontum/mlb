@@ -42,7 +42,7 @@ export class AuthService {
   {
     let headers = new Headers();
 
-    return  this._http.get('http://http://176.9.157.103:4000/api/notificationsstatus/'+this.user.id,{headers:headers});
+    return  this._http.get('http://176.9.157.103:4000/api/notificationsstatus/'+this.user.id,{headers:headers});
 
   }
 
@@ -66,7 +66,7 @@ export class AuthService {
 
     let headers = new Headers();
 
-    this._http.get('http://http://176.9.157.103:4000/api/logout',{headers:headers}).subscribe((data) => {
+    this._http.get('http://176.9.157.103:4000/api/logout',{headers:headers}).subscribe((data) => {
 
 
 

@@ -41,7 +41,7 @@ export class AccountComponent implements OnInit {
     let options = new RequestOptions({headers: headers});
 
 
-    this._http.put('http://http://176.9.157.103:4000/api/notifications/', formData, options).subscribe((data) => {
+    this._http.put('http://176.9.157.103:4000/api/notifications/', formData, options).subscribe((data) => {
 
       if (data.json().status == "success") {
 
@@ -75,7 +75,7 @@ export class AccountComponent implements OnInit {
 
   ngOnInit() {
 
-    this._http.get('http://http://176.9.157.103:4000/api/popularchallenges').subscribe((data) => {
+    this._http.get('http://176.9.157.103:4000/api/popularchallenges').subscribe((data) => {
 
 
 
@@ -109,7 +109,7 @@ export class AccountComponent implements OnInit {
 
       if(params['id']!="" || params['id']!= null)
       {
-        this._http.get('http://http://176.9.157.103:4000/api/profile/'+params['id']).subscribe((data) => {
+        this._http.get('http://176.9.157.103:4000/api/profile/'+params['id']).subscribe((data) => {
 
 
           this.profile = data.json();
