@@ -196,9 +196,9 @@
 
                 <div class="tab-pane  fade in  active"  id="popular-posts" *ngFor="let challenge of this.popularChallenges; let i = index">
                   <div class="push-down-15">
-                    <img [src]='"images/challenge_cover/"+ challenge.id +".jpg"' width="250" height="100" alt="Posts">
+                    <a [routerLink]='"/challenge/"+challenge.id'><img [src]='"images/challenge_cover/"+ challenge.id +".jpg"' width="250" height="100" alt="Posts"></a>
                     <h5>
-                      <a href="single-post.html">{{challenge.title}}</a>
+                      <a [routerLink]='"/challenge/"+challenge.id'>{{challenge.title}}</a>
                     </h5>
                     <span class="widget-posts__time">{{ challenge.publish_date | timeAgo}}</span>
                   </div>
@@ -223,8 +223,8 @@
   <div class="container">
     <div class="col-xs-12  col-md-3">
       <div class="widget-about  push-down-30">
-        
-        
+
+
         <span class="footer__text">ChallengeHub, auf der die Community Medienhäusern hilft, ihre Innovationsprobleme zu lösen</span>
         <br/>
         <br/>
