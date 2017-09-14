@@ -58,7 +58,7 @@ export class ChallengeComponent implements OnInit {
       });
     }
 
-    this._http.get('http://176.9.157.103:4000/api/popularchallenges').subscribe((data) => {
+    this._http.get('http://176.9.157.103:80/api/popularchallenges').subscribe((data) => {
 
 
 
@@ -77,7 +77,7 @@ export class ChallengeComponent implements OnInit {
 
       if(params['id']!="" || params['id']!= null)
       {
-        this._http.get('http://176.9.157.103:4000/api/challenge/'+params['id']).subscribe((data) => {
+        this._http.get('http://176.9.157.103:80/api/challenge/'+params['id']).subscribe((data) => {
 
 
 
@@ -137,7 +137,7 @@ export class ChallengeComponent implements OnInit {
     let options = new RequestOptions({headers: headers});
 
 
-    this._http.put('http://176.9.157.103:4000/api/notifications/', formData, options).subscribe((data) => {
+    this._http.put('http://176.9.157.103:80/api/notifications/', formData, options).subscribe((data) => {
 
       if (data.json().status == "success") {
 
@@ -183,7 +183,7 @@ export class ChallengeComponent implements OnInit {
         //headers.append('Content-Type', 'multipart/form-data');
 
 
-        this._http.put('http://176.9.157.103:4000/api/ideas/' + this.challenge.id, formData, options).subscribe((data) => {
+        this._http.put('http://176.9.157.103:80/api/ideas/' + this.challenge.id, formData, options).subscribe((data) => {
 
           if (data.json().status == "success") {
 
@@ -235,7 +235,7 @@ export class ChallengeComponent implements OnInit {
         //headers.append('Content-Type', 'multipart/form-data');
 
 
-        this._http.put('http://176.9.157.103:4000/api/question/' + this.challenge.id, formData, options).subscribe((data) => {
+        this._http.put('http://176.9.157.103:80/api/question/' + this.challenge.id, formData, options).subscribe((data) => {
 
           if (data.json().status == "success") {
 
@@ -348,7 +348,7 @@ export class ChallengeComponent implements OnInit {
       let options = new RequestOptions({headers: headers});
 
 
-      this._http.put('http://176.9.157.103:4000/api/idealike/' + this.challenge.id, formData, options).subscribe((data) => {
+      this._http.put('http://176.9.157.103:80/api/idealike/' + this.challenge.id, formData, options).subscribe((data) => {
 
         if (data.json().status == "success") {
 
@@ -387,7 +387,7 @@ export class ChallengeComponent implements OnInit {
       let options = new RequestOptions({headers: headers});
 
 
-      this._http.put('http://176.9.157.103:4000/api/unlikeidea/' + this.challenge.id, formData, options).subscribe((data) => {
+      this._http.put('http://176.9.157.103:80/api/unlikeidea/' + this.challenge.id, formData, options).subscribe((data) => {
 
         if (data.json().status == "success") {
 
@@ -442,7 +442,7 @@ export class ChallengeComponent implements OnInit {
       let options = new RequestOptions({headers: headers});
 
 
-      this._http.put('http://176.9.157.103:4000/api/questionlike/' + this.challenge.id, formData, options).subscribe((data) => {
+      this._http.put('http://176.9.157.103:80/api/questionlike/' + this.challenge.id, formData, options).subscribe((data) => {
 
         if (data.json().status == "success") {
 
@@ -481,7 +481,7 @@ export class ChallengeComponent implements OnInit {
       let options = new RequestOptions({headers: headers});
 
 
-      this._http.put('http://176.9.157.103:4000/api/unlikequestion/' + this.challenge.id, formData, options).subscribe((data) => {
+      this._http.put('http://176.9.157.103:80/api/unlikequestion/' + this.challenge.id, formData, options).subscribe((data) => {
 
         if (data.json().status == "success") {
 

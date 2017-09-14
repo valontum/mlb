@@ -17,7 +17,7 @@ export class NewChallengeComponent implements OnInit {
   ngOnInit() {
 
 
-    this._http.get('http://176.9.157.103:4000/api/popularchallenges').subscribe((data) => {
+    this._http.get('http://176.9.157.103:80/api/popularchallenges').subscribe((data) => {
 
 
 
@@ -98,7 +98,7 @@ export class NewChallengeComponent implements OnInit {
     let options = new RequestOptions({headers: headers});
 
 
-    this._http.put('http://176.9.157.103:4000/api/notifications/', formData, options).subscribe((data) => {
+    this._http.put('http://176.9.157.103:80/api/notifications/', formData, options).subscribe((data) => {
 
       if (data.json().status == "success") {
 
@@ -157,7 +157,7 @@ export class NewChallengeComponent implements OnInit {
 
 
 
-          this._http.post('http://176.9.157.103:4000/api/new-challenge', formData,).subscribe((data) => {
+          this._http.post('http://176.9.157.103:80/api/new-challenge', formData,).subscribe((data) => {
 
             if (data.json().status == "Challenge Created") {
 
