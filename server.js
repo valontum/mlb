@@ -22,7 +22,7 @@ app.use(cookieSession({
 
 
 
-app.use(cors({origin: 'www.challengehub.media'}));
+app.use(cors({origin: 'http://www.challengehub.media'}));
 
 // Parsers for POST data
 app.use(bodyParser.json());
