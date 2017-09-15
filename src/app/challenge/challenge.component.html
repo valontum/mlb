@@ -215,7 +215,7 @@
 
               <ul class="nav  nav-tabs">
                 <li [class]='showQuestions ? "" : "active"'>
-                  <a (click)="showQuestions = false" data-toggle="tab"> <span class="glyphicon  glyphicon-flash"></span> &nbsp;Idea Submission ({{challenge.ideas.length}}) </a>
+                  <a (click)="showQuestions = false" data-toggle="tab"> <span class="glyphicon  glyphicon-flash"></span> &nbsp;Idea Submissions ({{challenge.ideas.length}}) </a>
                 </li>
                 <li [class]='showQuestions ? "active" : ""'> <a  (click)="showQuestions = true" data-toggle="tab"> <span class="glyphicon  glyphicon-question-sign"></span> &nbsp;Questions & Comments ({{challenge.questions.length}}) </a> </li>
               </ul>
@@ -240,7 +240,7 @@
 
                               <div class="col-xs-12">
 
-                                <textarea rows="4" type="text" placeholder="Du einen Gedanken zu dieser Challenge? Teile ihn mit der Community!" [(ngModel)]="data.solution" name="solution"></textarea>
+                                <textarea rows="4" type="text" [placeholder]='authService.isAuthenticated().status ? "Du einen Gedanken zu dieser Challenge? Teile ihn mit der Community!" : "Du einen Gedanken zu dieser Challenge? Teile ihn mit der Community! (Please login to submit and idea)"' [attr.disabled]="authService.isAuthenticated().status ? null : true" [(ngModel)]="data.solution" name="solution"></textarea>
 
                               </div>
 
@@ -274,7 +274,7 @@
 
                       <td></td>
                       <td align="right">
-                        <button class="btn  btn-info  btn-info--transparent" (click)="postSolution()">Submit Idea</button>
+                        <button class="btn  btn-info  btn-info--transparent" (click)="postSolution()">{{authService.isAuthenticated().status ? "Submit Idea" : "Login" }}</button>
 
 
                       </td>
@@ -337,7 +337,7 @@
 
                             <div class="col-xs-12">
 
-                              <textarea rows="4" type="text" placeholder="Ask a question..." [(ngModel)]="data.question" name="question"></textarea>
+                              <textarea rows="4" type="text" placeholder="Ask a question..." [placeholder]='authService.isAuthenticated().status ? "Ask a question..." : "Ask a question... (Please login to for posting a question)"' [attr.disabled]="authService.isAuthenticated().status ? null : true" [(ngModel)]="data.question" name="question"></textarea>
 
                             </div>
 
@@ -371,7 +371,7 @@
 
                     <td></td>
                     <td align="right">
-                      <button class="btn  btn-info  btn-info--transparent" (click)="postQuestion()">Post</button>
+                      <button class="btn  btn-info  btn-info--transparent" (click)="postQuestion()">{{authService.isAuthenticated().status ? "Post" : "Login" }}</button>
 
 
                     </td>
