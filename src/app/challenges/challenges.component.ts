@@ -42,7 +42,7 @@ export class ChallengesComponent implements OnInit {
 
       });
     }
-    this._http.get('http://176.9.157.103:80/api/challenges').subscribe((data) => {
+    this._http.get('http://176.9.157.103/api/challenges').subscribe((data) => {
 
 
 
@@ -56,7 +56,7 @@ export class ChallengesComponent implements OnInit {
 
     });
 
-    this._http.get('http://176.9.157.103:80/api/popularchallenges').subscribe((data) => {
+    this._http.get('http://176.9.157.103/api/popularchallenges').subscribe((data) => {
 
 
 
@@ -74,7 +74,7 @@ export class ChallengesComponent implements OnInit {
   signout()
   {
     this.authService.signOut();
-    this.router.navigate(['/login']);
+      this.router.navigate(['/home']);
   }
 
   likeUnlike(array)
@@ -122,7 +122,7 @@ export class ChallengesComponent implements OnInit {
       let options = new RequestOptions({headers: headers});
 
 
-      this._http.put('http://176.9.157.103:80/api/like/' + postId, formData, options).subscribe((data) => {
+      this._http.put('http://176.9.157.103/api/like/' + postId, formData, options).subscribe((data) => {
 
         if (data.json().status == "success") {
 
@@ -164,7 +164,7 @@ export class ChallengesComponent implements OnInit {
       let options = new RequestOptions({headers: headers});
 
 
-      this._http.put('http://176.9.157.103:80/api/notifications/', formData, options).subscribe((data) => {
+      this._http.put('http://176.9.157.103/api/notifications/', formData, options).subscribe((data) => {
 
         if (data.json().status == "success") {
 
@@ -200,7 +200,7 @@ export class ChallengesComponent implements OnInit {
       let options = new RequestOptions({headers: headers});
 
 
-      this._http.put('http://176.9.157.103:80/api/unlike/' + postId, formData, options).subscribe((data) => {
+      this._http.put('http://176.9.157.103/api/unlike/' + postId, formData, options).subscribe((data) => {
 
         if (data.json().status == "success") {
 

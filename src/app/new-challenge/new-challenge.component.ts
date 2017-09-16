@@ -17,7 +17,7 @@ export class NewChallengeComponent implements OnInit {
   ngOnInit() {
 
 
-    this._http.get('http://176.9.157.103:80/api/popularchallenges').subscribe((data) => {
+    this._http.get('http://176.9.157.103/api/popularchallenges').subscribe((data) => {
 
 
 
@@ -81,7 +81,7 @@ export class NewChallengeComponent implements OnInit {
   signout()
   {
     this.authService.signOut();
-    this.router.navigate(['/login']);
+      this.router.navigate(['/home']);
   }
 
   setOffNotifications()
@@ -98,7 +98,7 @@ export class NewChallengeComponent implements OnInit {
     let options = new RequestOptions({headers: headers});
 
 
-    this._http.put('http://176.9.157.103:80/api/notifications/', formData, options).subscribe((data) => {
+    this._http.put('http://176.9.157.103/api/notifications/', formData, options).subscribe((data) => {
 
       if (data.json().status == "success") {
 
@@ -145,6 +145,7 @@ export class NewChallengeComponent implements OnInit {
       formData.append('reward', this.newChallenge.reward);
       formData.append('amount', this.newChallenge.amount);
       formData.append('deadline', this.newChallenge.deadline);
+      formData.append('name', window.localStorage.getItem('user_name'));
 
           formData.append('pict', this.newChallenge.file, this.newChallenge.file.name);
 
@@ -157,7 +158,7 @@ export class NewChallengeComponent implements OnInit {
 
 
 
-          this._http.post('http://176.9.157.103:80/api/new-challenge', formData,).subscribe((data) => {
+          this._http.post('http://176.9.157.103/api/new-challenge', formData,).subscribe((data) => {
 
             if (data.json().status == "Challenge Created") {
 

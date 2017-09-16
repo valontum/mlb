@@ -37,7 +37,7 @@ export class NotificationsComponent implements OnInit {
 
   ngOnInit() {
 
-    this._http.get('http://176.9.157.103:80/api/popularchallenges').subscribe((data) => {
+    this._http.get('http://176.9.157.103/api/popularchallenges').subscribe((data) => {
 
 
 
@@ -75,7 +75,7 @@ export class NotificationsComponent implements OnInit {
   signout()
   {
     this.authService.signOut();
-    this.router.navigate(['/login']);
+      this.router.navigate(['/home']);
   }
 
 
@@ -95,7 +95,7 @@ export class NotificationsComponent implements OnInit {
     let options = new RequestOptions({headers: headers});
 
 
-    this._http.put('http://176.9.157.103:80/api/notifications/', formData, options).subscribe((data) => {
+    this._http.put('http://176.9.157.103/api/notifications/', formData, options).subscribe((data) => {
 
       if (data.json().status == "success") {
 

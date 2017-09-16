@@ -981,6 +981,7 @@ a.menu-toggle {
 }
 .main-navigation li a:hover {
 	color: #FFFFFF;
+  cursor: pointer;
 }
 
 /**
@@ -2200,6 +2201,7 @@ footer ul li {
 }
 .footer-main ul a:hover, .footer-main ul a:focus {
 	color: #FFFFFF;
+  cursor: pointer;
 }
 .footer-main .footer-logo {
 	width: 162px;

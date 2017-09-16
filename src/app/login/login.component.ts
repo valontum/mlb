@@ -83,7 +83,7 @@ export class LoginComponent implements OnInit {
       let options = new RequestOptions({ headers: headers });
 
 
-      this._http.post('http://176.9.157.103:80/api/authenticate', formData,{headers:headers}).subscribe((data) => {
+      this._http.post('http://176.9.157.103/api/authenticate', formData,{headers:headers}).subscribe((data) => {
 
         if (data.json().status == "Incorrect Email or Password") {
 
@@ -178,7 +178,7 @@ export class LoginComponent implements OnInit {
 
 
 
-          this._http.post('http://176.9.157.103:80/api/register', formData,{headers:headers}).subscribe((data) => {
+          this._http.post('http://176.9.157.103/api/register', formData,{headers:headers}).subscribe((data) => {
 
             if (data.json().status == "User exists") {
 

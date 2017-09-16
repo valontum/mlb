@@ -17,6 +17,7 @@ export class AccountComponent implements OnInit {
   private sub: any;
   profile = null;
   user = null;
+  popularChallenges = [];
 
   constructor(private route: ActivatedRoute, private router: Router, private _http:Http, private authService: AuthService) {
 
@@ -41,7 +42,7 @@ export class AccountComponent implements OnInit {
     let options = new RequestOptions({headers: headers});
 
 
-    this._http.put('http://176.9.157.103:80/api/notifications/', formData, options).subscribe((data) => {
+    this._http.put('http://176.9.157.103/api/notifications/', formData, options).subscribe((data) => {
 
       if (data.json().status == "success") {
 
@@ -63,19 +64,140 @@ export class AccountComponent implements OnInit {
 
   }
 
-  signout()
+
+
+
+  postLike(postId, id)
   {
-    this.authService.signOut();
-    this.router.navigate(['/login']);
+
+
+
+
+
+    if(this.authService.isAuthenticated().status) {
+
+      var formData = new FormData();
+      formData.append('target_publisher_id', this.profile.challenges[id].publisher_id);
+      let headers = new Headers();
+      let options = new RequestOptions({headers: headers});
+
+
+      this._http.put('http://176.9.157.103/api/like/' + postId, formData, options).subscribe((data) => {
+
+        if (data.json().status == "success") {
+
+          console.log("success");
+
+          this.profile.challenges[id].likes.push({publisher_id: this.user.id});
+
+
+        } else {
+
+        }
+
+
+      });
+
+
+    }else
+    {
+      this.router.navigateByUrl('/login');
+    }
+
+
   }
 
 
-  popularChallenges = [];
+  likeUnlike(array)
+  {
+
+
+    if(this.user == null)
+    {
+
+
+      return "Like";
+
+    }
+    else
+    {
+      for(var i=0; i<array.length;i++) {
+        if (array[i].publisher_id == this.user.id)
+        {
+          return "Unlike";
+        }
+
+      }
+
+      return "Like";
+    }
+
+
+
+
+
+  }
+
+
+
+
+  unLike(postId, id)
+  {
+
+
+
+    if(this.authService.isAuthenticated().status) {
+
+      var formData = new FormData();
+      formData.append('like_id', this.user.id);
+      let headers = new Headers();
+      let options = new RequestOptions({headers: headers});
+
+
+      this._http.put('http://176.9.157.103/api/unlike/' + postId, formData, options).subscribe((data) => {
+
+        if (data.json().status == "success") {
+
+          console.log("success");
+
+
+        } else {
+
+          var removeIndex = this.profile.challenges[id].likes.map(function (item) {
+            return item.publisher_id;
+          }).indexOf(this.user.id);
+
+// remove object
+          this.profile.challenges[id].likes.splice(removeIndex, 1);
+
+
+        }
+
+
+      });
+
+    }
+    else
+    {
+      this.router.navigateByUrl('/login');
+    }
+
+
+  }
+
+  signout()
+  {
+    this.authService.signOut();
+      this.router.navigate(['/home']);
+  }
+
+
+
 
 
   ngOnInit() {
 
-    this._http.get('http://176.9.157.103:80/api/popularchallenges').subscribe((data) => {
+    this._http.get('http://176.9.157.103/api/popularchallenges').subscribe((data) => {
 
 
 
@@ -109,7 +231,7 @@ export class AccountComponent implements OnInit {
 
       if(params['id']!="" || params['id']!= null)
       {
-        this._http.get('http://176.9.157.103:80/api/profile/'+params['id']).subscribe((data) => {
+        this._http.get('http://176.9.157.103/api/profile/'+params['id']).subscribe((data) => {
 
 
           this.profile = data.json();

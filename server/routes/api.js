@@ -685,7 +685,7 @@ router.post('/new-challenge',upload.single('pict'),  (req, res, next) => {
     var challenge_id = randomstring.generate();
 
 
-    var query = {id:challenge_id, publisher_id: req.session.user, title: formData.title, description : formData.description, requirements : formData.requirements, reward : formData.reward, amount : formData.amount, deadline : formData.deadline, publish_date: new Date() , question : [], final_solution : [], likes : [], shares : [], ideas:[] };
+    var query = {publisher_name:formData.name, id:challenge_id, publisher_id: req.session.user, title: formData.title, description : formData.description, requirements : formData.requirements, reward : formData.reward, amount : formData.amount, deadline : formData.deadline, publish_date: new Date() , questions : [], final_solution : [], likes : [], shares : [], ideas:[] };
 
 
 

@@ -57,7 +57,7 @@
 
 span {
   color: #b3b3b3;
-  
+
 }
 
 .title {
@@ -70,6 +70,12 @@ span {
   font-size: 14px;
 }
 .form .message a {
+  color: #428bca;
+  text-decoration: none;
+}
+
+.form .message a:hover  {
+  cursor: pointer;
   color: #428bca;
   text-decoration: none;
 }
